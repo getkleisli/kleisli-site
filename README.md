@@ -24,8 +24,13 @@ npm run dev
 
 ## Deploy
 
-Its own Vercel project, production domain `getkleisli.com`. Nothing here depends on the app repo,
-Clerk, or any environment variables.
+Static export (`output: "export"`) deployed to GitHub Pages by `.github/workflows/deploy.yml` on every
+push to `main`. Production domain is `getkleisli.com` (`public/CNAME`). There is no server: `/agents.md`
+and `/llms.txt` are `force-static` route handlers rendered at build time. Nothing here depends on the
+app repo, Clerk, or any environment variables.
+
+Don't add anything that needs a server (dynamic route handlers, middleware, `cookies()`/`headers()`,
+ISR); the export build will fail.
 
 ## Copy rules
 
